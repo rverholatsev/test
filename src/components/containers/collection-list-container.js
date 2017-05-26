@@ -1,25 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ConnectionList from '../views/collection-list';
-import Spinner from '../views/spinner';
 import * as collectionApi from '../../api/collection-api';
+import * as CONST from '../../helpers/constants';
 import store from '../../store';
-import {COLLECTION_STATE_REQUEST, COLLECTION_STATE_SUCCESS, COLLECTION_STATE_FAILURE} from '../../helpers/constants';
+import Spinner from '../views/spinner';
 
 const CollectionListContainer = React.createClass({
 
     componentDidMount: function () {
-        collectionApi.getAllCollections();
+        collectionApi.getCollections();
     },
 
     render: function () {
-        switch (this.props.state) {
-            case COLLECTION_STATE_REQUEST:
+        switch(this.props.state) {
+            case CONST.COLLECTIONS_STATE_REQUEST:
                 return <Spinner />;
-            case COLLECTION_STATE_SUCCESS:
-                return <ConnectionList collections={this.props.collections} />;
-            case COLLECTION_STATE_FAILURE:
-                return <h1>fail</h1>;
+            case CONST.COLLECTIONS_STATE_SUCCESS:
+                return <ConnectionList collections={this.props.collections}/>;
+            case CONST.COLLECTIONS_STATE_FAILURE:
+                return <h1>Failure</h1>;
         }
     }
 });

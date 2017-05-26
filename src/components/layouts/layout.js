@@ -7,8 +7,8 @@ export default React.createClass({
             <div className="container-fluid
                 cols-xs-12
                 col-sm-offset-1 col-sm-10
-                col-md-offset-2 col-md-8
-                col-lg-offset-3 col-lg-6"
+                col-md-offset-1 col-md-10
+                col-lg-offset-2 col-lg-8"
             >
                 <nav className="navbar">
                     <div className="nav-header">

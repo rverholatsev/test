@@ -1,20 +1,27 @@
 import * as types from '../actions/action-types';
 
-export function getAllCollectionsRequest() {
+export function getCollectionsRequest() {
     return {
-        type: types.GET_ALL_COLLECTIONS_REQUEST
+        type: types.GET_COLLECTIONS_REQUEST,
     };
 }
 
-export function getAllCollectionsSuccess(collections) {
+export function getCollectionsSuccess(data) {
     return {
-        type: types.GET_ALL_COLLECTIONS_SUCCESS,
-        collections: collections
+        type: types.GET_COLLECTIONS_SUCCESS,
+        data: data
     };
 }
 
-export function getAllCollectionsFailure() {
+export function getCollectionSuccess(data) {
     return {
-        type: types.GET_ALL_COLLECTIONS_FAILURE
+        type: types.GET_COLLECTION_SUCCESS,
+        data: data
+    };
+}
+
+export function getCollectionFailure() {
+    return {
+        type: types.GET_COLLECTIONS_FAILURE,
     };
 }

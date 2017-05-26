@@ -12,35 +12,31 @@ export default React.createClass({
 
                     return (
                         <div key={collection.id} className="collection-list-item square row">
-                            <div className="col-xs-12">
-                                <div className="row">
-                                    <div className="col-xs-10">
-                                        <div className="col-xs-12">
-                                            <Link className="collection-list-item__name"
-                                                  to={'/collections/' + collection.id}>
-                                                {collection.name}
-                                            </Link>
-                                        </div>
-                                        <div className="collection-list-item__desc col-xs-12">
-                                            {collection.desc}
-                                        </div>
-                                    </div>
-                                    <div className="col-xs-2">
-                                        <Link className="circle collection-list-item__start" to={'/testing/' + collection.id}>
-                                            <img className=""
-                                                 src="images/start.svg"
-                                                 width={45} height={45}/>
-                                        </Link>
-                                        <Link className="circle" to={'/testing/' + collection.id}>
-                                            <img src="images/analytics.svg"
-                                                 width={45} height={45}/>
-                                        </Link>
-
-                                    </div>
+                            <div className="col-xs-10">
+                                <div className="col-xs-12">
+                                    <Link className="name-box"
+                                          to={'/collections/' + collection.id}>
+                                        {collection.name}
+                                    </Link>
+                                </div>
+                                <div className="desc-box col-xs-12">
+                                    {collection.desc}
                                 </div>
                             </div>
+                            <div className="col-xs-2">
+                                <Link className="circle start-link" to={'/' + collection.id}>
+                                    <img className=""
+                                         src="images/start.svg"
+                                         width={45} height={45}/>
+                                </Link>
+                                <Link className="circle" to={'/' + collection.id}>
+                                    <img src="images/analytics.svg"
+                                         width={45} height={45}/>
+                                </Link>
+
+                            </div>
                             <div className="col-xs-12">
-                                <Carousel height={300} items={collection.products}/>
+                                <Carousel height={300} items={collection.models}/>
                             </div>
                         </div>
                     );

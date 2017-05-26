@@ -1,28 +1,63 @@
 import * as types from '../actions/action-types';
-import {COLLECTION_STATE_REQUEST, COLLECTION_STATE_SUCCESS, COLLECTION_STATE_FAILURE} from '../helpers/constants';
+import * as CONST from '../helpers/constants';
 import _ from 'lodash';
 
 const initialState = {
-    collections: [],
-    state: COLLECTION_STATE_REQUEST
+    state: CONST.COLLECTIONS_STATE_REQUEST,
+    collections: []
 };
 
-const collectionReducer = function(state = initialState, action) {
+function replace(collections, collection) {
+    collections.forEach((collectionsItem, index) => {
+            if (collectionsItem.id == collection.id) {
+                collections.splice(index, 1);
+            }
+        }
+    );
 
-    switch(action.type) {
+    collections.push(collection);
 
-        case types.GET_ALL_COLLECTIONS_REQUEST:
-            return Object.assign({}, state, { collections: [], state: COLLECTION_STATE_REQUEST} );
+    return collections;
+}
 
-        case types.GET_ALL_COLLECTIONS_SUCCESS:
-            return Object.assign({}, state, { collections: action.collections, state: COLLECTION_STATE_SUCCESS} );
+const collectionReducer = function (state = initialState, action) {
 
-        case types.GET_ALL_COLLECTIONS_FAILURE:
-            return Object.assign({}, state, { collections: [], state: COLLECTION_STATE_FAILURE });
+    switch (action.type) {
 
+        case types.GET_COLLECTIONS_REQUEST:
+            state = Object.assign({}, state, {
+                collections: [],
+                state: CONST.COLLECTIONS_STATE_REQUEST
+            });
+            break;
+
+
+        case types.GET_COLLECTIONS_SUCCESS:
+            state = Object.assign({}, state, {
+                collections: action.data,
+                state: CONST.COLLECTIONS_STATE_SUCCESS
+            });
+            break;
+
+        case types.GET_COLLECTION_SUCCESS:
+            console.log('COLLECTION REDUCER');
+            console.log(replace(state.collections, action.data));
+
+            state = Object.assign({}, state, {
+                collections: replace(state.collections, action.data),
+                state: CONST.COLLECTIONS_STATE_SUCCESS
+            });
+            break;
+
+        case types.GET_COLLECTIONS_FAILURE:
+            state = Object.assign({}, state, {
+                collections: [],
+                state: CONST.COLLECTIONS_STATE_FAILURE
+            });
+            break;
     }
 
     return state;
-}
+};
 
 export default collectionReducer;

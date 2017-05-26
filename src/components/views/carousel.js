@@ -18,12 +18,7 @@ export default React.createClass({
                 width: 0,
                 height: 0
             },
-            imagesDimensions: [
-                // id: {
-                //      width: 100,
-                //      height: 100
-                // }
-            ],
+            imagesDimensions: [],
         };
     },
     handleCarouselOnMeasure: function (carouselDimensions) {

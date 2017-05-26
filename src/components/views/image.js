@@ -15,6 +15,11 @@ export default React.createClass({
 
         overlapText: PropTypes.bool.isRequired
     },
+    defaultProps: {
+        index: undefined,
+        overlapText: true,
+
+    },
     getInitialState: function () {
         return {
             isActive: false,
@@ -32,24 +37,31 @@ export default React.createClass({
     },
     renderImage: function () {
         if (this.props.width && !this.props.height) {
-            return <img className="image"
-                        src={this.props.src}
-                        width={this.props.width}/>;
+            return <img src={this.props.src}
+                        width={this.props.width}
+            />;
         }
         else if (!this.props.width && this.props.height) {
-            return <img className="image"
-                        src={this.props.src}
-                        height={this.props.height}/>;
+            return <img src={this.props.src}
+                        height={this.props.height}
+            />;
         }
         else if (this.props.width && this.props.height) {
-            return <img className="image"
+            return <img src={this.props.src}
+                        width={this.props.width}
+                        height={this.props.height}
+            />;
+        }
+        else {
+            return <img className="img--expanding-width"
                         src={this.props.src}
                         width={this.props.width}
-                        height={this.props.height}/>;
+                        height={this.props.height}
+            />;
         }
     },
     renderText: function () {
-        if (this.props.name || this.props.description) {
+        if (this.props.name || this.props.desc) {
             if (this.props.overlapText === true) {
                 return (
                     <div
