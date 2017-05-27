@@ -11,14 +11,16 @@ export default React.createClass({
     },
     render: function () {
         return (
-            <div className="model-list col-xs-12">
-                {this.props.models.map(model => {
+            <div className="model-list">
+                {this.props.models.map((model, index) => {
                     return (
-                        <div className="row model-list-item">
-                            <Model data={model}/>
+                        <div className="model-list-item row" key={index}>
+                            <Model data={model}
+                                   smallProts={true}
+                                   mode='widget'
+                            />
                         </div>
                     );
-
                 })}
             </div>
         );

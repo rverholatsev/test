@@ -3,7 +3,7 @@ import * as CONST from '../helpers/constants';
 import _ from 'lodash';
 
 const initialState = {
-    state: CONST.COLLECTIONS_STATE_REQUEST,
+    state: CONST.STATE_REQUEST,
     collections: []
 };
 
@@ -27,7 +27,7 @@ const collectionReducer = function (state = initialState, action) {
         case types.GET_COLLECTIONS_REQUEST:
             state = Object.assign({}, state, {
                 collections: [],
-                state: CONST.COLLECTIONS_STATE_REQUEST
+                state: CONST.STATE_REQUEST
             });
             break;
 
@@ -35,7 +35,7 @@ const collectionReducer = function (state = initialState, action) {
         case types.GET_COLLECTIONS_SUCCESS:
             state = Object.assign({}, state, {
                 collections: action.data,
-                state: CONST.COLLECTIONS_STATE_SUCCESS
+                state: CONST.STATE_SUCCESS
             });
             break;
 
@@ -45,14 +45,14 @@ const collectionReducer = function (state = initialState, action) {
 
             state = Object.assign({}, state, {
                 collections: replace(state.collections, action.data),
-                state: CONST.COLLECTIONS_STATE_SUCCESS
+                state: CONST.STATE_SUCCESS
             });
             break;
 
         case types.GET_COLLECTIONS_FAILURE:
             state = Object.assign({}, state, {
                 collections: [],
-                state: CONST.COLLECTIONS_STATE_FAILURE
+                state: CONST.STATE_FAILURE
             });
             break;
     }

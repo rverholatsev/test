@@ -26,7 +26,7 @@ main {
     HORIZONTAL MARGIN ROW
 */
 
-.row--h-margin{
+.row--h-margin {
     margin: 20px;
 }
 
@@ -56,6 +56,9 @@ main {
     background: white;
     box-shadow: -1.5px 1.5px 5px #cccccc;
     transition: box-shadow .25s;
+
+    width: auto;
+    height: auto;
 }
 
 .square:hover {
@@ -418,5 +421,19 @@ main {
 
 .model-list-item {
     margin: 20px 0;
+}
+
+/*
+    PROTOTYPE LIST
+*/
+
+.prototype-list {
+}
+
+.prototype-list-row {
+    margin-bottom: 10px;
+}
+
+.prototype-list-item {
 }
 

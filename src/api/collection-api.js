@@ -13,35 +13,35 @@ var data = [
                 id: 0,
                 name: 'Product',
                 desc: 'Description of current product. It is a excellent product. Beautiful brunette. Most perfect woman that i ever see.',
-                src: 'images/uploaded/models/0.jpg',
+                src: '/images/uploaded/models/0.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     },
                     {
                         id: 1,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/1.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/1.jpg',
+                        count: 2,
                     },
                     {
                         id: 2,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/2.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/2.jpg',
+                        count: 3,
                     },
                     {
                         id: 3,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/3.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/3.jpg',
+                        count: 4,
                     }
                 ]
             },
@@ -49,14 +49,14 @@ var data = [
                 id: 1,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/1.jpg',
+                src: '/images/uploaded/models/1.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -64,14 +64,14 @@ var data = [
                 id: 2,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/2.jpg',
+                src: '/images/uploaded/models/2.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -79,14 +79,14 @@ var data = [
                 id: 3,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/3.jpg',
+                src: '/images/uploaded/models/3.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -94,14 +94,14 @@ var data = [
                 id: 4,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/0.jpg',
+                src: '/images/uploaded/models/0.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -109,14 +109,14 @@ var data = [
                 id: 5,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/1.jpg',
+                src: '/images/uploaded/models/1.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -124,14 +124,14 @@ var data = [
                 id: 6,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/2.jpg',
+                src: '/images/uploaded/models/2.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -139,14 +139,14 @@ var data = [
                 id: 7,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/3.jpg',
+                src: '/images/uploaded/models/3.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -154,14 +154,14 @@ var data = [
                 id: 8,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/1.jpg',
+                src: '/images/uploaded/models/1.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -169,14 +169,14 @@ var data = [
                 id: 9,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/2.jpg',
+                src: '/images/uploaded/models/2.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -184,14 +184,14 @@ var data = [
                 id: 10,
                 name: 'Name ',
                 desc: 'desc',
-                src: 'images/uploaded/models/3.jpg',
+                src: '/images/uploaded/models/3.jpg',
                 prototypes: [
                     {
                         id: 0,
                         name: 'Name',
                         desc: 'desc',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             },
@@ -207,14 +207,15 @@ var data = [
                 id: 1,
                 name: 'Name prod.1',
                 desc: 'desc prod.1',
-                src: 'images/uploaded/models/0.jpg',
+                src: '/images/uploaded/models/0.jpg',
+                count: 1,
                 prototypes: [
                     {
                         id: 1,
                         name: 'Name prot.1',
                         desc: 'desc prot.1',
-                        src: 'images/uploaded/prototypes/0.jpg',
-                        count: 5,
+                        src: '/images/uploaded/prototypes/0.jpg',
+                        count: 1,
                     }
                 ]
             }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 
 import Image from '../views/image.js';
 import Carousel from '../views/carousel.js';
@@ -7,17 +7,15 @@ import Carousel from '../views/carousel.js';
 export default React.createClass({
     render: function () {
         return (
-            <div className="collection-list col-xs-12">
+            <div className="collection-list">
                 {this.props.collections.map(collection => {
-
                     return (
                         <div key={collection.id} className="collection-list-item square row">
                             <div className="col-xs-10">
-                                <div className="col-xs-12">
-                                    <Link className="name-box"
-                                          to={'/collections/' + collection.id}>
-                                        {collection.name}
-                                    </Link>
+                                <div className="col-xs-12 name-box" onClick={function () {
+                                    browserHistory.push('/' + collection.id);
+                                }}>
+                                    {collection.name}
                                 </div>
                                 <div className="desc-box col-xs-12">
                                     {collection.desc}
@@ -29,7 +27,7 @@ export default React.createClass({
                                          src="images/start.svg"
                                          width={45} height={45}/>
                                 </Link>
-                                <Link className="circle" to={'/' + collection.id}>
+                                <Link className="circle" to={'/test/' + collection.id}>
                                     <img src="images/analytics.svg"
                                          width={45} height={45}/>
                                 </Link>

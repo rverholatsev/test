@@ -6,39 +6,98 @@ import Image from '../views/image.js';
 
 export default React.createClass({
     propTypes: {
-        data: PropTypes.object,
-        smallIcons: PropTypes.bool,
+        data: PropTypes.object.isRequired,
+        smallProts: PropTypes.bool,
+        mode: PropTypes.oneOf(['view', 'widget']),
+        onClick: PropTypes.func,
     },
     defaultProps: {
-        smallIcons: false
+        smallProts: false,
+        mode: 'view',
     },
-    renderPrototypes: function (numOfItemInRow) {
-        let prots = this.props.data.prototypes;
-        let divRow = <div className="row prototype-list"/>;
+    getInitialState: function () {
+        let protsCounts = [], counter = 0;
 
-        for (let i = 0; i < prots.length; i += numOfItemInRow) {
-            let divCol = <div className={"col-xs-" + (12 / numOfItemInRow)}/>;
-            for (let j = prots[i]; j < numOfItemInRow; j++) {
-                if (prots[j] !== undefined) {
-                    divCol.appendChild(
-                        <div key={prots[j].id} className="square prototype-list-item">
-                            <Image src={prots[j]}
-                                   name={prots[j].name}
-                                   desc={prots[j].desc}
-                                   index={prots[j].count}
-                            />
-                        </div>
-                    );
-                }
+        this.props.data.prototypes.map(prot => {
+            protsCounts[prot.id] = prot.count;
+            if(prot.count !== -1){
+                counter++;
             }
-            console.log(divCol);
-            // divRow.appendChild({divCol});
+        });
+
+        return {
+            protsCounts: protsCounts,
+            // for widget:
+            counter: counter,
+            prevProtID: null,
+        };
+    },
+    handlerOnclick: function (protID) {
+        let protsCounts = this.state.protsCounts,
+            prevProtID = this.state.prevProtID,
+            counter = this.state.counter;
+
+        if (protsCounts[protID] == counter) {
+            counter--;
+            protsCounts[protID] = -1;
+            prevProtID = null;
+        } else if (protsCounts[protID] == -1) {
+            counter++;
+            protsCounts[protID] = counter;
+            prevProtID = protID;
         }
 
-        return divRow;
+        this.setState(() => {
+            return {
+                protsCounts: protsCounts,
+                counter: counter,
+                prevProtID: prevProtID,
+            };
+        });
+    },
+    renderPrototypes: function (numOfProtsInRow) {
+        let prots = this.props.data.prototypes;
+        let rows = [];
+        let self = this;
+
+        prots.map(function (_, i) {
+            if (i % numOfProtsInRow !== 0) {
+                return;
+            }
+
+            rows.push(
+                <div className="row" key={i / numOfProtsInRow}>
+                    {prots.map(function (prot, j) {
+                        if (!(j >= i && j < (i + numOfProtsInRow))) {
+                            return;
+                        }
+
+                        return (<div className={"prototype-list-row col-xs-" + (12 / numOfProtsInRow)} key={j - i}>
+                            <div key={prot.id}
+                                 className={"prototype-list-item"}
+                                 onClick={function () {
+                                     if (self.props.mode == 'widget') {
+                                         self.handlerOnclick(prot.id);
+                                     }
+                                 }}>
+                                <Image src={prot.src}
+                                       name={prot.name}
+                                       desc={prot.desc}
+                                       index={self.state.protsCounts[prot.id]}
+                                       overlapText={true}
+                                />
+                            </div>
+                        </div>);
+                    })}
+                </div>
+            );
+        });
+
+        return <div>{rows}</div>;
     },
     render: function () {
         let model = this.props.data;
+        let numOfProtsInRow = this.props.smallProts ? 3 : 2;
         return (
             <div className="square col-xs-12">
                 <div className="col-xs-4">
@@ -49,7 +108,7 @@ export default React.createClass({
                     />
                 </div>
                 <div className="col-xs-8">
-                    {this.renderPrototypes(this.props.smallIcons ? 2 : 3)}
+                    {this.renderPrototypes(numOfProtsInRow)}
                 </div>
             </div>
         );

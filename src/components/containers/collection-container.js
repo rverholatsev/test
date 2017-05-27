@@ -25,10 +25,10 @@ const CollectionContainer = React.createClass({
 
         switch (this.props.state) {
 
-            case CONST.COLLECTIONS_STATE_REQUEST:
+            case CONST.STATE_REQUEST:
                 return <Spinner/>;
 
-            case CONST.COLLECTIONS_STATE_SUCCESS:
+            case CONST.STATE_SUCCESS:
                 return <Collection collection={
                     this.props.collections.find(
                         (collectionItem) => {
@@ -36,7 +36,7 @@ const CollectionContainer = React.createClass({
                         }
                     )}/>;
 
-            case CONST.COLLECTIONS_STATE_FAILURE:
+            case CONST.STATE_FAILURE:
                 return <Failure/>;
         }
     }

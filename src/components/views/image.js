@@ -30,7 +30,7 @@ export default React.createClass({
         if (this.props.index !== null) {
             return (
                 <div className={"index " + (this.state.isActive ? "index--active" : "")}>
-                    {this.props.index}
+                    {(this.props.index >=0 ? this.props.index : '')}
                 </div>
             );
         }

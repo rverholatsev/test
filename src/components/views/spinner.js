@@ -5,7 +5,7 @@ export default function (props) {
     return (
         <div className="row">
             <div className="col-xl-12 spinner">
-                <img src="images/spinner.svg" />
+                <img src="/images/spinner.svg" />
             </div>
         </div>
     );

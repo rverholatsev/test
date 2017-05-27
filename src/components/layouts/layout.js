@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 
 export default React.createClass({
     render: function () {
@@ -12,7 +12,9 @@ export default React.createClass({
             >
                 <nav className="navbar">
                     <div className="nav-header">
-                        <div className="navbar-brand">
+                        <div className="navbar-brand" onClick={() => {
+                            browserHistory.push('/');
+                        }}>
                             Collections Test
                         </div>
                     </div>

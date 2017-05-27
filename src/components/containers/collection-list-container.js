@@ -14,11 +14,11 @@ const CollectionListContainer = React.createClass({
 
     render: function () {
         switch(this.props.state) {
-            case CONST.COLLECTIONS_STATE_REQUEST:
+            case CONST.STATE_REQUEST:
                 return <Spinner />;
-            case CONST.COLLECTIONS_STATE_SUCCESS:
+            case CONST.STATE_SUCCESS:
                 return <ConnectionList collections={this.props.collections}/>;
-            case CONST.COLLECTIONS_STATE_FAILURE:
+            case CONST.STATE_FAILURE:
                 return <h1>Failure</h1>;
         }
     }
