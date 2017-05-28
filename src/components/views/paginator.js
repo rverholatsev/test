@@ -10,8 +10,6 @@ export default React.createClass({
     },
     getDefaultProps: function () {
         return {
-            // page: this.props.page > this.props.maxPage ? 1 : this.props.page,
-            // maxPage: this.props.maxPage <= 0 ? 0 : this.props.maxPage,
             pageCount: 5
         };
     },
@@ -39,8 +37,6 @@ export default React.createClass({
             endPage = this.props.pageCount;
         } else if (page >= this.props.maxPage - Math.floor(this.props.pageCount / 2)) {
             // страниц больше 5,текущая находится в конце
-
-            console.log('1');
             isBegin = false;
             isEnd = true;
 
@@ -48,8 +44,6 @@ export default React.createClass({
             endPage = this.props.maxPage;
         } else {
             // текущая страница посередине, страниц больше пяти
-            console.log('2');
-
             isBegin = isEnd = false;
             startPage = page - Math.floor(this.props.pageCount / 2);
             endPage = page + Math.floor(this.props.pageCount / 2);
@@ -64,7 +58,10 @@ export default React.createClass({
         };
     },
     handlerOnClick: function (nextPage) {
-        this.props.onChange(nextPage);
+        if (this.props.onChange && !this.props.onChange(nextPage)) {
+            return;
+        }
+
         this.setState(this.calcStateByPage(nextPage));
     },
     renderPages: function () {

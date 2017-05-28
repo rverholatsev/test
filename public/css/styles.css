@@ -83,7 +83,7 @@ content > * {
 
     background-color: white;
     border-radius: 35px;
-    box-shadow: -1px 1px 2px #ffffff;
+    box-shadow: -1px 1px 2px #dddddd;
 
     transition: box-shadow .25s, background .15s;
 }
@@ -103,11 +103,11 @@ content > * {
 }
 
 .circle--select:hover {
-    box-shadow: -1px 1px 2px #ffffff;
+    box-shadow: none;
 }
 
 .circle--select:active {
-    box-shadow: -1px 1px 2px #ffffff;
+    box-shadow: none;
     background: #000;
 }
 

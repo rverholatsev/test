@@ -25,19 +25,76 @@ export default React.createClass({
 
         return {
             collection: Object.assign({}, this.props.collection, {models: models}),
-            modelIndex: 0,
+            model: models[0],
+            page: 1,
+            pages: [],
+            counter: 0,
         };
     },
+    handlerOnModelChanged: function (model) {
+        let collection = this.state.collection,
+            pages = this.state.pages,
+            counter = this.state.counter;
+
+        collection.models.map(function (collectionModel, index) {
+            if (model.id === collectionModel.id) {
+                collection.models[index] = model;
+
+                let isDone = true;
+                this.state.model.prototypes.map(function (prototype) {
+                    if (prototype.count === -1) {
+                        isDone = false;
+                    }
+                }.bind(this));
+
+                pages[this.state.page - 1] = isDone;
+                isDone ? counter++ : counter--;
+            }
+        }.bind(this));
+
+        this.setState(Object.assign({}, this.state,
+            {
+                collection: collection,
+                model: model,
+                pages: pages,
+                counter: counter,
+            })
+        );
+
+
+    },
+    handlerOnPageChanged: function (page) {
+        this.setState(
+            Object.assign(this.state, this.state.model, {
+                model: this.state.collection.models[page - 1],
+                page: page,
+            })
+        );
+
+        return true;
+    },
     render: function () {
+        let isDone = (this.state.counter == this.state.collection.models.length);
         return (
             <content>
                 <div className="square row">
-                    <h4 className="col-xs-12">{this.state.collection.name}</h4>
+                    <h3 className="col-xs-10">{this.state.collection.name}</h3>
+                    <div className="col-xs-2 circle"
+                         style={{visible: ( isDone ? 'visible' : 'hidden')}}>
+                        <span>Завершить</span>
+                    </div>
                 </div>
 
-                <Model data={this.state.collection.models[this.state.modelIndex]} mode="widget" smallProts={true}/>
+                <Model data={this.state.model}
+                       mode="widget"
+                       smallProts={true}
+                       onChange={this.handlerOnModelChanged}
+                />
 
-                <Paginator page={4} maxPage={10} onChange={() => {}}/>
+                <Paginator page={this.state.page}
+                           maxPage={this.state.collection.models.length}
+                           onChange={this.handlerOnPageChanged}
+                />
             </content>
         );
     }

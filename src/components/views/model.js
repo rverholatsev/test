@@ -9,16 +9,19 @@ export default React.createClass({
         data: PropTypes.object.isRequired,
         smallProts: PropTypes.bool,
         mode: PropTypes.oneOf(['view', 'widget']),
-        onClick: PropTypes.func,
+        onChange: PropTypes.func,
     },
     defaultProps: {
-        smallProts: false,
+        smallProts: true,
         mode: 'view',
     },
     getInitialState: function () {
+        return this.getStateByProps(this.props);
+    },
+    getStateByProps: function(props){
         let protsCounts = [], counter = 0;
 
-        this.props.data.prototypes.map(prot => {
+        props.data.prototypes.map(prot => {
             protsCounts[prot.id] = prot.count;
             if (prot.count !== -1) {
                 counter++;
@@ -31,6 +34,9 @@ export default React.createClass({
             counter: counter,
             prevProtID: null,
         };
+    },
+    componentWillReceiveProps: function (nextProps) {
+        this.setState(this.getStateByProps(nextProps));
     },
     handlerOnclick: function (protID) {
         let protsCounts = this.state.protsCounts,
@@ -54,6 +60,14 @@ export default React.createClass({
                 prevProtID: prevProtID,
             };
         });
+
+        if (this.props.onChange) {
+            let model = this.props.data;
+            model.prototypes.map(function (prototype, index) {
+                prototype.count = this.state.protsCounts[index];
+            }.bind(this));
+            this.props.onChange(model);
+        }
     },
     renderPrototypes: function (numOfProtsInRow) {
         let prots = this.props.data.prototypes;
