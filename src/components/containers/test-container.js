@@ -1,7 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as collectionApi from '../../api/collection-api';
+import {setTestResult} from '../../actions/test-actions'
 import store from '../../store';
+
+import {browserHistory} from 'react-router';
+
+import * as collectionApi from '../../api/collection-api';
+
 import Test from '../views/test';
 import Spinner from '../views/spinner';
 import Failure from '../views/failure';
@@ -18,7 +23,8 @@ const TestContainer = React.createClass({
         collectionApi.getCollection(collectionId);
     },
     handlerOnSuccess: function (collection) {
-        alert('success');
+        store.dispatch(setTestResult(collection));
+        browserHistory.push('/test/result/' + collection.id);
     },
     render: function () {
         let collectionId = this.props.params.collectionId;

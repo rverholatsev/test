@@ -6,7 +6,13 @@ import ModelsList from '../views/models-list';
 
 export default React.createClass({
     propTypes: {
-        collection: PropTypes.object,
+        collection: PropTypes.object.isRequired,
+        hideStartButton: PropTypes.bool,
+    },
+    getDefaultProps: function () {
+        return {
+            hideStartButton: false,
+        };
     },
     render: function () {
         let collection = this.props.collection;
@@ -21,9 +27,10 @@ export default React.createClass({
                             {collection.desc}
                         </div>
                     </div>
-                    <div className="col-xs-2">
+                    <div className="col-xs-2"
+                         style={ {visibility: (this.props.hideStartButton ? 'hidden' : 'visible')} }>
                         <Link className="circle start-link" to={'/test/' + collection.id}>
-                            <img src="images/start.svg"/>
+                            <img src="/images/start.svg"/>
                         </Link>
                     </div>
 

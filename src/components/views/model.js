@@ -11,14 +11,16 @@ export default React.createClass({
         mode: PropTypes.oneOf(['view', 'widget']),
         onChange: PropTypes.func,
     },
-    defaultProps: {
-        smallProts: true,
-        mode: 'view',
+    getDefaultProps: function () {
+        return {
+            smallProts: true,
+            mode: 'view',
+        };
     },
     getInitialState: function () {
         return this.getStateByProps(this.props);
     },
-    getStateByProps: function(props){
+    getStateByProps: function (props) {
         let protsCounts = [], counter = 0;
 
         props.data.prototypes.map(prot => {
@@ -27,6 +29,8 @@ export default React.createClass({
                 counter++;
             }
         });
+
+        console.log(protsCounts);
 
         return {
             protsCounts: protsCounts,

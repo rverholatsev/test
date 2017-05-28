@@ -204,21 +204,35 @@ var data = [
         count: 5,
         models: [
             {
-                id: 1,
-                name: 'Name prod.1',
-                desc: 'desc prod.1',
-                src: '/images/uploaded/models/0.jpg',
-                count: 1,
+                id: 10,
+                name: 'Name ',
+                desc: 'desc',
+                src: '/images/uploaded/models/1.jpg',
                 prototypes: [
                     {
-                        id: 1,
-                        name: 'Name prot.1',
-                        desc: 'desc prot.1',
-                        src: '/images/uploaded/prototypes/0.jpg',
+                        id: 0,
+                        name: 'Name',
+                        desc: 'desc',
+                        src: '/images/uploaded/prototypes/2.jpg',
                         count: 1,
                     }
                 ]
-            }
+            },
+            {
+                id: 11,
+                name: 'Name ',
+                desc: 'desc',
+                src: '/images/uploaded/models/3.jpg',
+                prototypes: [
+                    {
+                        id: 0,
+                        name: 'Name',
+                        desc: 'desc',
+                        src: '/images/uploaded/prototypes/4.jpg',
+                        count: 1,
+                    }
+                ]
+            },
         ]
     }
 ];
@@ -228,13 +242,15 @@ export function getCollections() {
 
     setTimeout(() => {
         store.dispatch(actions.getCollectionsSuccess(data));
-    }, 1000);
+    }, 500);
 }
 
 export function getCollection(id) {
     store.dispatch(actions.getCollectionsRequest());
 
     setTimeout(() => {
-        store.dispatch(actions.getCollectionSuccess(data.find((collection) => { return collection.id == id; })));
-    }, 1000);
+        store.dispatch(actions.getCollectionSuccess(data.find((collection) => {
+            return collection.id == id;
+        })));
+    }, 500);
 }

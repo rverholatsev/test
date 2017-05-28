@@ -138,7 +138,7 @@ export default React.createClass({
                 <div className="carousel" style={ style }>
                     <div className="arrow arrow--left"
                          onClick={this.handleLeftArrowOnClick}>
-                        <img src="images/left.svg"/>
+                        <img src="/images/left.svg"/>
                     </div>
 
                     <div className="images"
@@ -167,7 +167,7 @@ export default React.createClass({
 
                     <div className="arrow arrow--right"
                          onClick={this.handleRightArrowOnClick}>
-                        <img src="images/right.svg"/>
+                        <img src="/images/right.svg"/>
                     </div>
                 </div>
             </Measure>

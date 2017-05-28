@@ -17,7 +17,7 @@ export default React.createClass({
                         <div className="model-list-item row" key={index}>
                             <Model data={model}
                                    smallProts={true}
-                                   mode='widget'
+                                   mode='view'
                             />
                         </div>
                     );

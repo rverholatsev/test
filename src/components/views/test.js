@@ -32,8 +32,8 @@ export default React.createClass({
         };
     },
     handlerOnModelChanged: function (model) {
-        let collection = this.state.collection,
-            pages = this.state.pages,
+        let collection = Object.assign({}, this.state.collection),
+            pages = Object.assign({}, this.state.pages),
             counter = this.state.counter;
 
         collection.models.map(function (collectionModel, index) {
@@ -48,7 +48,12 @@ export default React.createClass({
                 }.bind(this));
 
                 pages[this.state.page - 1] = isDone;
-                isDone ? counter++ : counter--;
+
+                if (!this.state.pages[this.state.page - 1] && isDone) {
+                    counter++;
+                } else if (this.state.pages[this.state.page - 1] && !isDone) {
+                    counter--;
+                }
             }
         }.bind(this));
 
@@ -78,9 +83,15 @@ export default React.createClass({
         return (
             <content>
                 <div className="square row">
-                    <h3 className="col-xs-10">{this.state.collection.name}</h3>
-                    <div className="col-xs-2 circle"
-                         style={{visible: ( isDone ? 'visible' : 'hidden')}}>
+                    <h3 className="col-xs-10">
+                        {this.state.collection.name}
+                    </h3>
+                    <div className="circle"
+                         style={{visibility: ( isDone ? 'visible' : 'hidden')}}
+                         onClick={function () {
+                             this.props.onSuccess(this.state.collection);
+                         }.bind(this)}
+                    >
                         <span>Завершить</span>
                     </div>
                 </div>
