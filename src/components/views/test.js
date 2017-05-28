@@ -29,18 +29,15 @@ export default React.createClass({
         };
     },
     render: function () {
-        console.log(this.state.collection);
         return (
             <content>
                 <div className="square row">
-                    <div className="name-box">
-                        {this.state.collection.name}
-                    </div>
+                    <h4 className="col-xs-12">{this.state.collection.name}</h4>
                 </div>
-                <div className="row">
-                    <Model data={this.state.collection.models[this.state.modelIndex]} mode="widget" smallProts={true}/>
-                </div>
-                <Paginator />
+
+                <Model data={this.state.collection.models[this.state.modelIndex]} mode="widget" smallProts={true}/>
+
+                <Paginator page={4} maxPage={10} onChange={() => {}}/>
             </content>
         );
     }

@@ -22,19 +22,25 @@ export default React.createClass({
                                 </div>
                             </div>
                             <div className="col-xs-2">
-                                <Link className="circle start-link" to={'/' + collection.id}>
+                                <Link className="circle start-link" to={'/test/' + collection.id}>
                                     <img className=""
-                                         src="images/start.svg"
+                                         src="/images/start.svg"
                                          width={45} height={45}/>
                                 </Link>
-                                <Link className="circle" to={'/test/' + collection.id}>
-                                    <img src="images/analytics.svg"
+                                <Link className="circle" to={'/' + collection.id}>
+                                    <img src="/images/analytics.svg"
                                          width={45} height={45}/>
                                 </Link>
 
                             </div>
+
                             <div className="col-xs-12">
+                                <h4 className="col-xs-12">Модели коллекции</h4>
                                 <Carousel height={300} items={collection.models}/>
+                            </div>
+
+                            <div className="col-xs-12">
+                                <h4 className="col-xs-12">Тестированиий пройденно: {collection.count}</h4>
                             </div>
                         </div>
                     );

@@ -20,7 +20,7 @@ export default React.createClass({
 
         this.props.data.prototypes.map(prot => {
             protsCounts[prot.id] = prot.count;
-            if(prot.count !== -1){
+            if (prot.count !== -1) {
                 counter++;
             }
         });
@@ -99,7 +99,7 @@ export default React.createClass({
         let model = this.props.data;
         let numOfProtsInRow = this.props.smallProts ? 3 : 2;
         return (
-            <div className="square col-xs-12">
+            <div className="square row">
                 <div className="col-xs-4">
                     <Image src={model.src} overlapText={false}
                            name={model.name}
